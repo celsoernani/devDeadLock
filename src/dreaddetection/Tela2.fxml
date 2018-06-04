@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="186.0" prefWidth="193.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="AncoraRecursos" layoutX="16.0" layoutY="16.0" prefHeight="177.0" prefWidth="165.0">
+         <children>
+            <Text fx:id="NameRecurso" layoutX="48.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recurso 1" textAlignment="CENTER" wrappingWidth="68.38151168823242" />
+            <TextField fx:id="Nome1" layoutX="13.0" layoutY="52.0" prefHeight="30.0" prefWidth="141.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="52.0" />
+            <Button fx:id="buttonGO" layoutX="54.0" layoutY="97.0" mnemonicParsing="false" onAction="#RecursosSetup" prefHeight="30.0" prefWidth="58.0" text="OK" />
+            <Text fx:id="titleRec" layoutX="43.0" layoutY="8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recursos" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="AncoraSO" layoutX="16.0" layoutY="27.0" prefHeight="155.0" prefWidth="163.0" visible="false">
+         <children>
+            <Text fx:id="titleSO1" layoutX="67.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SO" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="time" layoutX="6.0" layoutY="65.0" />
+            <Text layoutX="-1.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo de Verificação" textAlignment="CENTER" wrappingWidth="165.13671875">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Button fx:id="buttonGO" layoutX="63.0" layoutY="105.0" mnemonicParsing="false" onAction="#handleButtonAction" text="GO" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

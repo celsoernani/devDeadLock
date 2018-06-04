@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="244.0" layoutY="325.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="275.0" text="STOP" textOverrun="CENTER_ELLIPSIS" />
+      <AnchorPane fx:id="AncoraP6" layoutX="488.0" layoutY="403.0" prefHeight="143.0" prefWidth="145.0">
+         <children>
+            <TextField fx:id="SolNew" layoutX="13.0" layoutY="71.0" prefHeight="26.0" prefWidth="43.0" />
+            <Text layoutX="3.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solicitação" textAlignment="CENTER" wrappingWidth="68.38153195381165" />
+            <TextField fx:id="UtiNew" layoutX="87.0" layoutY="71.0" prefHeight="26.0" prefWidth="43.0" />
+            <Text layoutX="75.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilização" textAlignment="CENTER" wrappingWidth="66.71225214004517" />
+            <Label layoutX="25.0" layoutY="14.0" text="Proceso Novo" textAlignment="CENTER" textOverrun="CLIP">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonAddProcesso" layoutX="51.0" layoutY="104.0" mnemonicParsing="false" text="ADD" />
+         </children>
+      </AnchorPane>
+      <TextArea fx:id="Log" layoutY="403.0" prefHeight="143.0" prefWidth="488.0" />
+      <ImageView fitHeight="55.0" fitWidth="59.0" layoutX="33.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane fx:id="AncoraP61" layoutX="618.0" layoutY="403.0" prefHeight="143.0" prefWidth="145.0">
+         <children>
+            <Label layoutX="20.0" layoutY="14.0" text="Excluir Processo" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="idRemove" layoutX="59.0" layoutY="72.0" prefHeight="26.0" prefWidth="43.0" />
+            <Text layoutX="46.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id" textAlignment="CENTER" wrappingWidth="68.38153195381165" />
+            <Button fx:id="buttonRemoveProcesso" layoutX="51.0" layoutY="104.0" mnemonicParsing="false" text="Remove" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="Processo1" fitHeight="55.0" fitWidth="59.0" layoutX="33.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Processo2" fitHeight="55.0" fitWidth="59.0" layoutX="104.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Processo3" fitHeight="55.0" fitWidth="59.0" layoutX="179.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Processo4" fitHeight="55.0" fitWidth="59.0" layoutX="250.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Processo5" fitHeight="55.0" fitWidth="59.0" layoutX="330.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Processo6" fitHeight="55.0" fitWidth="59.0" layoutX="416.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Processo7" fitHeight="55.0" fitWidth="59.0" layoutX="484.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Processo8" fitHeight="55.0" fitWidth="59.0" layoutX="555.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Processo9" fitHeight="55.0" fitWidth="59.0" layoutX="622.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Processo10" fitHeight="55.0" fitWidth="59.0" layoutX="693.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso1" fitHeight="55.0" fitWidth="59.0" layoutX="33.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso2" fitHeight="55.0" fitWidth="59.0" layoutX="104.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso3" fitHeight="55.0" fitWidth="59.0" layoutX="179.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso4" fitHeight="55.0" fitWidth="59.0" layoutX="250.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso5" fitHeight="55.0" fitWidth="59.0" layoutX="330.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso6" fitHeight="55.0" fitWidth="59.0" layoutX="405.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso7" fitHeight="55.0" fitWidth="59.0" layoutX="484.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso8" fitHeight="55.0" fitWidth="59.0" layoutX="555.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso9" fitHeight="55.0" fitWidth="59.0" layoutX="622.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="Recurso10" fitHeight="55.0" fitWidth="59.0" layoutX="693.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
