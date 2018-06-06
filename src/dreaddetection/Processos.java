@@ -40,14 +40,18 @@ public class Processos extends Thread{
         this.recursos = new int[numRecursos];
         this.telagrafo = telagrafo;
         this.sistemaOperacional = so;
+        this.telagrafo.Log.appendText("Processo "+this.Pid+" criado\n");
+        
     } 
     
     @Override
     public void run() {
-        //auxiliares de tempo
+        //auxiliar de tempo
         int aux = 0;
-        int aux2 =0;
-   
+        //variavel auxiliar para controle de bloqueios
+        boolean foiBloqueado = false;
+        //varaivel para finalizar processo/recurso
+        int finishedResource = 0;
         
         //variavel keepalive serve para manter o processo vivo
         while(keepAlive){
@@ -59,7 +63,7 @@ public class Processos extends Thread{
             }
             aux++;
             
-            if(aux%processRequestTime==0){
+            if(aux % processRequestTime==0){
               //quando o tempo em segundos de solicitação passar ele tem que solicitar um recurso ainda nao usado por ele próprio  
                 try {
                     mutex.acquire();
@@ -75,81 +79,131 @@ public class Processos extends Thread{
                             requestedResouce = sistemaOperacional.getResourceById(currentRequest + 1);
                             telagrafo.Log.appendText("P"+this.Pid+" solicitou "+requestedResouce.getName()+"\n");
                             //se não houver processos disponiveis bloqueia o processo
-                           if(requestedResouce.getAvailableInstances() == 0)
+                           if(requestedResouce.getRecursosDisp() == 0)
 					{
-						telagrafo.Log.appendText("P"+this.Pid+" bloqueiou com  "+requestedResouce.getName());	
-					}
+						telagrafo.Log.appendText("P"+this.Pid+" bloqueiou com  "+requestedResouce.getName()+"\n");	
+                                                 foiBloqueado = true;
+                                        }
 
-                    try {
-                        mutex.acquire();
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    if(this.keepAlive) {
-
-                                mutex.release();
-						//decrementa os recursos disponiveis
-						requestedResouce.decrementInstances();
-
-						//bota ele no array de recursos
-						this.recursos[currentRequest]++;
-						resourcesHeld.add(requestedResouce);
-                                                //bota na fila de tempos // time line
-						resourcesTimes.add(processUsageTime);
-
-						//o atual processo possui um recursos 
-						currentRequest = -1;
-
-						//process runs for a certain amount of time
-						telagrafo.Log.appendText( "P"+this.Pid+" roda com "+requestedResouce.getName());
-
+                    mutex.release();
+                    boolean bloqueado;
+                    do{         
+                        //recurso ocupado, da um down no semafaro dele
+                        try {
+                                    requestedResouce.downSemafaroRec();
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                                //solicita outro recurso e é desbloqueado
+						if(foiBloqueado)
+						{
+							telagrafo.Log.appendText("P"+this.Pid+" desbloqueiou com  "+requestedResouce.getName()+"\n");
+							foiBloqueado = false;
+		
+						}
                                 try {
                                     mutex.acquire();
                                 } catch (InterruptedException ex) {
                                     Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
                                 }
+                                //se ainda estiver vivo ele libera o recurso que estava usando
+                                bloqueado = this.keepAlive && this.requestedResouce.deadProcesses > 0;
+						if(bloqueado) 
+						{
+							this.requestedResouce.liberarRecurso();
+						}
+						mutex.release();
+                                                
+					} while(bloqueado);
+                    
+                    
+						if(this.keepAlive) 
+					{
+                                                try {
+                                                    mutex.acquire();
+                                                } catch (InterruptedException ex) {
+                                                    Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
+                                                }
+                                             //decrementa os recursos daquele tipo disponiveis que é só um
+                                                requestedResouce.decrementInstances();
+
+						//bota ele no array de recursos
+						this.recursos[currentRequest]++;
+						resourcesHeld.add(requestedResouce);
+                                                //bota na fila de tempos // time line
+						resourcesTimes.add(processUsageTime+1);
+
+						//o atual processo possui um recursos ou ja foi usado
+						currentRequest = -1;
+
+						//process runs for a certain amount of time
+						telagrafo.Log.appendText( "P"+this.Pid+" roda com "+requestedResouce.getName()+"\n");
+                                                mutex.release();
 
 					} else {
-                                try {
-                                    requestedResouce.liberarRecurso();
-                                } catch (InterruptedException ex) {
-                                    Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-					}
-
+                                            mutex.release();
+                                        }
+                                   }
+			}
+            
+                            //se ainda estiver vivo 
+                        if(this.keepAlive) {
+                            //decrementa o tempo de uso enquanto esta vivo
+				decrementResourcesTimes(resourcesTimes);
+				//se zerar seta a variavel auxliar  liberando entao o recurso
+				finishedResource = resourcesTimesIsZero(resourcesTimes);
+				if(finishedResource!=-1) 
+				{
+					liberarRecurso(finishedResource);
 				}
-			} else {
-                try {
-                    mutex.acquire();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
-                }
 			}
-                        decrementResourcesTimes(resourcesTimes);
-			aux2 = resourcesTimesIsZero(resourcesTimes);
-                        
-                        if(aux2!=-1)
-			{
-				// Logging the resource release
-				telagrafo.Log.appendText("P"+this.Pid + " liberou " + resourcesHeld.get(aux2).getName());
+		}
 
-				// Removing resource data from the arrays
-				resourcesTimes.remove(aux2);
-				this.recursos[resourcesHeld.get(aux2).getId()-1]--;
-				resourcesHeld.get(aux2).incrementInstances();
-                try {
-                    resourcesHeld.get(aux2).liberarRecurso();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-				resourcesHeld.remove(aux2);
-			}
-                   }
-                    telagrafo.Log.appendText("P" + this.Pid + " finalizou");
-                    
+		
+        try {
+            finalizaProcesso();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
+        }
             }
                   
+    private void finalizaProcesso() throws InterruptedException {
+	
+		mutex.acquire();
+		
+                    //processo morto terminou
+		if(this.currentRequest >= 0) {
+			this.requestedResouce.deadProcesses--;
+		}
+		
+                //liberando os recursos
+             		for(Recursos resource : this.resourcesHeld) {
+			telagrafo.Log.appendText( "P" + this.Pid + " liberou " + resource.getName()+"\n");
+			resource.incrementInstances();
+			resource.liberarRecurso();
+		}
+		
+		telagrafo.Log.appendText("P" + this.Pid + " finalizou\n");
+		
+	mutex.release();
+		
+	}
+
+    
+    
+    public void liberarRecurso(int resourceId)
+	{
+		
+		telagrafo.Log.appendText( "P"+this.Pid + " liberou " + resourcesHeld.get(resourceId).getName()+"\n");
+
+		//Remove da timline e dos recursos em uso, e incrementa nos recurssos disponiveis
+		resourcesTimes.remove(resourceId);
+		this.recursos[resourcesHeld.get(resourceId).getId()-1]--;
+		resourcesHeld.get(resourceId).incrementInstances();
+		resourcesHeld.get(resourceId).liberarRecurso();
+		resourcesHeld.remove(resourceId);
+		
+	}
                 //matar processo
 	public void kill() {
 		this.keepAlive = false;
@@ -210,11 +264,8 @@ public class Processos extends Thread{
 
 	}
         
-	public int getCurrentRequest() {
-		return currentRequest;
-	}
 
-      public int[] obterRecursos() {
+      public int[] getRecursos() {
         return recursos;
        
         }

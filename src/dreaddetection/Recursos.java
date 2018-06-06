@@ -19,7 +19,7 @@ public class Recursos {
         private final int quant;
         private int availableInstances;
         Semaphore disponivel = new Semaphore(1);
-   
+        public int deadProcesses = 0;    
 	
 
 	
@@ -32,7 +32,7 @@ public class Recursos {
 
 	
 	
-           public int getAvailableInstances() {
+           public int getRecursosDisp() {
 		return this.availableInstances;
 	}
            
@@ -46,7 +46,7 @@ public class Recursos {
 	}
         
         
-        public void takeInstance() throws InterruptedException {
+        public void downSemafaroRec() throws InterruptedException {
 		this.disponivel.acquire();
 	}
         
@@ -56,15 +56,18 @@ public class Recursos {
         
         //função que liberar o semafaro do recurso, assim o liberando 
         
-        public void liberarRecurso() throws InterruptedException {
-		disponivel.acquire();
+        public void liberarRecurso(){
+		disponivel.release();
 	}
 	
 	  //função que liberar o semafaro do recurso, na quantidade de processos que o possuem ou tentem assim o liberando 
-	public void liberarRecurso(int quant) throws InterruptedException {
-		disponivel.acquire(quant);
+	public void liberarRecurso(int quant) {
+		disponivel.release(quant);
 	}
 	
+	public void liberartodosRecurso() {
+		disponivel.release(this.quant);
+	}
 	
 	// Getters and Setters
 	

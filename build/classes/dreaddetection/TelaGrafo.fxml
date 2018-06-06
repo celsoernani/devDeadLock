@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="745.0" style="-fx-background-color: FFFD59;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="286.0" layoutY="331.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="206.0" text="Parar Execução" textFill="#a559ff" textOverrun="CENTER_ELLIPSIS">
+      <Button fx:id="FIM" layoutX="286.0" layoutY="331.0" mnemonicParsing="false" onAction="#acabarTudo" prefHeight="37.0" prefWidth="206.0" text="Parar Simulação" textFill="#a559ff" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
@@ -53,86 +53,86 @@
                <font>
                   <Font name="System Bold" size="10.0" />
                </font></Text>
-            <Button fx:id="buttonRemoveProcesso" disable="true" layoutX="53.0" layoutY="104.0" mnemonicParsing="false" text="Excluir" textFill="#a559ff">
+            <Button fx:id="buttonRemoveProcesso" disable="true" layoutX="53.0" layoutY="104.0" mnemonicParsing="false" onAction="#excluirProcesso" text="Excluir" textFill="#a559ff">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
          </children>
       </AnchorPane>
-      <ImageView fx:id="Processo2" fitHeight="55.0" fitWidth="59.0" layoutX="103.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo2" fitHeight="55.0" fitWidth="59.0" layoutX="103.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Blogger.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Processo3" fitHeight="55.0" fitWidth="59.0" layoutX="178.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo3" fitHeight="55.0" fitWidth="59.0" layoutX="178.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Chat.png" />
          </image></ImageView>
-      <ImageView fx:id="Processo4" fitHeight="55.0" fitWidth="59.0" layoutX="249.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo4" fitHeight="55.0" fitWidth="59.0" layoutX="249.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Facebook.png" />
          </image></ImageView>
-      <ImageView fx:id="Processo5" fitHeight="55.0" fitWidth="59.0" layoutX="321.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo5" fitHeight="55.0" fitWidth="59.0" layoutX="321.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Gmail.png" />
          </image></ImageView>
-      <ImageView fx:id="Processo6" fitHeight="55.0" fitWidth="59.0" layoutX="392.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo6" fitHeight="55.0" fitWidth="59.0" layoutX="392.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Illustrator.png" />
          </image></ImageView>
-      <ImageView fx:id="Processo7" fitHeight="55.0" fitWidth="59.0" layoutX="465.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo7" fitHeight="55.0" fitWidth="59.0" layoutX="465.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Linkedin.png" />
          </image></ImageView>
-      <ImageView fx:id="Processo8" fitHeight="55.0" fitWidth="59.0" layoutX="539.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo8" fitHeight="55.0" fitWidth="59.0" layoutX="539.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Photoshop.png" />
          </image></ImageView>
-      <ImageView fx:id="Processo9" fitHeight="55.0" fitWidth="59.0" layoutX="613.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo9" fitHeight="55.0" fitWidth="59.0" layoutX="613.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Pinterest.png" />
          </image></ImageView>
-      <ImageView fx:id="Processo10" fitHeight="55.0" fitWidth="59.0" layoutX="685.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo10" fitHeight="55.0" fitWidth="59.0" layoutX="685.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Twitter.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso1" fitHeight="55.0" fitWidth="59.0" layoutX="33.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso1" fitHeight="55.0" fitWidth="59.0" layoutX="33.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Banco.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso2" fitHeight="55.0" fitWidth="59.0" layoutX="104.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso2" fitHeight="55.0" fitWidth="59.0" layoutX="104.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Hd.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso3" fitHeight="55.0" fitWidth="59.0" layoutX="179.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso3" fitHeight="55.0" fitWidth="59.0" layoutX="179.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Impressora.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso4" fitHeight="55.0" fitWidth="59.0" layoutX="259.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso4" fitHeight="55.0" fitWidth="59.0" layoutX="259.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Monitor.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso5" fitHeight="55.0" fitWidth="59.0" layoutX="330.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso5" fitHeight="55.0" fitWidth="59.0" layoutX="330.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Pendrive.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso6" fitHeight="55.0" fitWidth="59.0" layoutX="405.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso6" fitHeight="55.0" fitWidth="59.0" layoutX="405.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Processador.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso7" fitHeight="55.0" fitWidth="59.0" layoutX="484.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso7" fitHeight="55.0" fitWidth="59.0" layoutX="484.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Ram.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso8" fitHeight="55.0" fitWidth="59.0" layoutX="555.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso8" fitHeight="55.0" fitWidth="59.0" layoutX="555.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Rato.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso9" fitHeight="55.0" fitWidth="59.0" layoutX="622.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso9" fitHeight="55.0" fitWidth="59.0" layoutX="622.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Teclado.png" />
          </image></ImageView>
-      <ImageView fx:id="Recurso10" fitHeight="55.0" fitWidth="59.0" layoutX="693.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Recurso10" fitHeight="55.0" fitWidth="59.0" layoutX="693.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Recursos/Webcam.png" />
          </image></ImageView>
@@ -146,157 +146,157 @@
             <Image url="@Imagens/Logo%20Menor.png" />
          </image>
       </ImageView>
-      <Label id="lblProcesso2" fx:id="lblProcesso2" layoutX="109.0" layoutY="29.0" text="2.Blogger" textFill="#4f4747">
+      <Label id="lblProcesso2" fx:id="lblProcesso2" layoutX="109.0" layoutY="29.0" text="2.Blogger" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso3" fx:id="lblProcesso3" layoutX="192.0" layoutY="29.0" text="3.Chat" textFill="#4f4747">
+      <Label id="lblProcesso3" fx:id="lblProcesso3" layoutX="192.0" layoutY="29.0" text="3.Chat" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso4" fx:id="lblProcesso4" layoutX="250.0" layoutY="28.0" text="4.Facebook" textFill="#4f4747">
+      <Label id="lblProcesso4" fx:id="lblProcesso4" layoutX="250.0" layoutY="28.0" text="4.Facebook" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso5" fx:id="lblProcesso5" layoutX="330.0" layoutY="28.0" text="5.Gmail" textFill="#4f4747">
+      <Label id="lblProcesso5" fx:id="lblProcesso5" layoutX="330.0" layoutY="28.0" text="5.Gmail" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso6" fx:id="lblProcesso6" layoutX="393.0" layoutY="28.0" text="6.Illustrator" textFill="#4f4747">
+      <Label id="lblProcesso6" fx:id="lblProcesso6" layoutX="393.0" layoutY="28.0" text="6.Illustrator" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso7" fx:id="lblProcesso7" layoutX="468.0" layoutY="29.0" text="7.Linkedin" textFill="#4f4747">
+      <Label id="lblProcesso7" fx:id="lblProcesso7" layoutX="468.0" layoutY="29.0" text="7.Linkedin" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso8" fx:id="lblProcesso8" layoutX="537.0" layoutY="28.0" text="8.PhotoShop" textFill="#4f4747">
+      <Label id="lblProcesso8" fx:id="lblProcesso8" layoutX="537.0" layoutY="28.0" text="8.PhotoShop" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso9" fx:id="lblProcesso9" layoutX="614.0" layoutY="29.0" text="9.Pinterest" textFill="#4f4747">
+      <Label id="lblProcesso9" fx:id="lblProcesso9" layoutX="614.0" layoutY="29.0" text="9.Pinterest" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso10" fx:id="lblProcesso10" layoutX="688.0" layoutY="29.0" text="10.Twitter" textFill="#4f4747">
+      <Label id="lblProcesso10" fx:id="lblProcesso10" layoutX="688.0" layoutY="29.0" text="10.Twitter" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso1" fx:id="lblRecurso1" layoutX="45.0" layoutY="256.0" text="Banco" textFill="#4f4747">
+      <Label id="lblRecurso1" fx:id="lblRecurso1" layoutX="45.0" layoutY="256.0" text="Banco" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso2" fx:id="lblRecurso2" layoutX="122.0" layoutY="256.0" text="HD" textFill="#4f4747">
+      <Label id="lblRecurso2" fx:id="lblRecurso2" layoutX="122.0" layoutY="256.0" text="HD" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso3" fx:id="lblRecurso3" layoutX="181.0" layoutY="256.0" text="Impressora" textFill="#4f4747">
+      <Label id="lblRecurso3" fx:id="lblRecurso3" layoutX="181.0" layoutY="256.0" text="Impressora" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso4" fx:id="lblRecurso4" layoutX="336.0" layoutY="256.0" text="PenDrive" textFill="#4f4747">
+      <Label id="lblRecurso4" fx:id="lblRecurso4" layoutX="336.0" layoutY="256.0" text="PenDrive" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso5" fx:id="lblRecurso5" layoutX="265.0" layoutY="256.0" text="Monitor" textFill="#4f4747">
+      <Label id="lblRecurso5" fx:id="lblRecurso5" layoutX="265.0" layoutY="256.0" text="Monitor" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso6" fx:id="lblRecurso6" layoutX="404.0" layoutY="256.0" text="Processador" textFill="#4f4747">
+      <Label id="lblRecurso6" fx:id="lblRecurso6" layoutX="404.0" layoutY="256.0" text="Processador" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso7" fx:id="lblRecurso7" layoutX="500.0" layoutY="256.0" text="RAM" textFill="#4f4747">
+      <Label id="lblRecurso7" fx:id="lblRecurso7" layoutX="500.0" layoutY="256.0" text="RAM" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso8" fx:id="lblRecurso8" layoutX="571.0" layoutY="256.0" text="Rato" textFill="#4f4747">
+      <Label id="lblRecurso8" fx:id="lblRecurso8" layoutX="571.0" layoutY="256.0" text="Rato" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso9" fx:id="lblRecurso9" layoutX="631.0" layoutY="256.0" text="Teclado" textFill="#4f4747">
+      <Label id="lblRecurso9" fx:id="lblRecurso9" layoutX="631.0" layoutY="256.0" text="Teclado" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblRecurso10" fx:id="lblRecurso10" layoutX="699.0" layoutY="256.0" text="WebCam" textFill="#4f4747">
+      <Label id="lblRecurso10" fx:id="lblRecurso10" layoutX="699.0" layoutY="256.0" text="WebCam" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso2" layoutX="110.0" layoutY="11.0" text="Status" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso2" layoutX="110.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso3" layoutX="185.0" layoutY="11.0" text="Status" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso3" layoutX="185.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso4" layoutX="256.0" layoutY="11.0" text="Status" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso4" layoutX="256.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso5" layoutX="328.0" layoutY="11.0" text="Status" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso5" layoutX="328.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso6" layoutX="398.0" layoutY="10.0" text="Status" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso6" layoutX="398.0" layoutY="10.0" text="Status" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso7" layoutX="472.0" layoutY="11.0" text="Status" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso7" layoutX="472.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso8" layoutX="546.0" layoutY="11.0" text="Status" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso8" layoutX="546.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso9" layoutX="620.0" layoutY="10.0" text="Status" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso9" layoutX="620.0" layoutY="10.0" text="Status" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso10" layoutX="694.0" layoutY="11.0" text="Status" textAlignment="CENTER" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso10" layoutX="694.0" layoutY="11.0" text="Status" textAlignment="CENTER" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <ImageView fx:id="Processo1" fitHeight="55.0" fitWidth="59.0" layoutX="28.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Processo1" fitHeight="55.0" fitWidth="59.0" layoutX="28.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@Imagens/Processos/Adobe.png" />
          </image>
       </ImageView>
-      <Label id="lblProcesso1" fx:id="lblProcesso1" layoutX="36.0" layoutY="28.0" text="1.Adobe" textFill="#4f4747">
+      <Label id="lblProcesso1" fx:id="lblProcesso1" layoutX="36.0" layoutY="28.0" text="1.Adobe" textFill="#4f4747" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso1" layoutX="40.0" layoutY="10.0" text="Status" textFill="#b2b12c">
+      <Label id="lblProcesso1" fx:id="StsProcesso1" layoutX="40.0" layoutY="10.0" text="Status" textFill="#b2b12c" visible="false">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

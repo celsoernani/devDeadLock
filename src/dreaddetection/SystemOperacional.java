@@ -19,8 +19,8 @@ import java.util.logging.Logger;
 public class SystemOperacional extends Thread {
     
         Semaphore mutex = new Semaphore(1);
-	private ArrayList<Recursos> resources = new ArrayList<Recursos>();
-	private ArrayList<Processos> processes = new ArrayList<Processos>();
+	private ArrayList<Recursos> resources = new ArrayList<>();
+	private ArrayList<Processos> processes = new ArrayList<>();
 	private int time;
         private final TelaGrafoController telagrafo;
         String lastDead = "";
@@ -43,10 +43,10 @@ public class SystemOperacional extends Thread {
             } catch (InterruptedException ex) {
                 Logger.getLogger(SystemOperacional.class.getName()).log(Level.SEVERE, null, ex);
             }
-			ArrayList<Integer> deadlocks = this.procuradeadlocks();
+			ArrayList<Integer> deadlocks = procuradeadlocks();
                         mutex.release();
                             
-                    //se não tiver deadlock avisa no log
+                    //se hovuer deadlock chama a função que procura e joga em uma string para setar no log
 			if(deadlocks != null) {
                             
                                 String str = this.deadlockString(deadlocks);
@@ -55,14 +55,18 @@ public class SystemOperacional extends Thread {
 					this.telagrafo.Log.appendText(this.deadlockString(deadlocks));
 				}
                                 else{
-                                
-                                    if(this.lastDead.equals("")) {
+                                // se houver um deadlock e depois de matar um processo acabar o deadlock da essa mensagem
+                                    if(!this.lastDead.equals("")) {
 					this.lastDead = "";
-					this.telagrafo.Log.appendText("Morreu o Deadlock \n");
+					this.telagrafo.Log.appendText("\nMorreu o Deadlock \n");
 				}
                                     
                                 }
 			}
+                      //enquanto nao ocorre deadlock  
+//                        else{
+//                            this.telagrafo.Log.appendText("Sem Deadlock \n");
+//                        }
                        
 
             try {
@@ -70,9 +74,8 @@ public class SystemOperacional extends Thread {
             } catch (InterruptedException ex) {
                 Logger.getLogger(SystemOperacional.class.getName()).log(Level.SEVERE, null, ex);
             }
-		}
-        
-        
+
+        }
                     
         
         }
@@ -88,23 +91,25 @@ public class SystemOperacional extends Thread {
 		//pegando os recursos disponiveis
 		int a[] = new int[m];
 		for(int i = 0; i < m; i++) {
-			a[i] = this.resources.get(i).availableInstances();
+			a[i] = this.resources.get(i).getRecursosDisp();
 		}
 
-		// pegando os recursos que estao ocupados 
+		// alocando o vetor de recursos existentes na matriz de recursos disponiveis, assim criando o grafo
 		int c[][] = new int[n][m];
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < m; j++) {
-                            c[i][j] = this.processes.get(i).getResourcesInstances()[j];
+                            c[i][j] = this.processes.get(i).getRecursos()[j];
 			}
 		}
                 
                 // pegando os recursos que estao sendo solicitados 
                 int r[] = new int[n];
 		for(int i = 0; i < n; i++) {
-			r[i] = this.processes.get(i).getCurrentRequest();
+			r[i] = this.processes.get(i).getPedidoatual();
 		}
            
+                
+                //variaveis auxiliares
                 int runnableProcesses;
 		int finishedProcesses = 0;
                 
@@ -112,24 +117,32 @@ public class SystemOperacional extends Thread {
 // -1 Significa que o processo não quer nenhum recurso
 // -2 Significa que o processo já foi simulado pelo algoritmo
             do {
+                        //no coemço nenhum processo é executavel
 			runnableProcesses = 0;
+                        //faz a busca
 			for(int i = 0; i < n; i++) {
+                            //se nao houver recurso disponivel e recursos entao sendo solicitados por ja estarem ocupados
 				if(r[i] == -1 || r[i] >= 0 && a[r[i]] > 0) {
 					for(int k = 0; k < m; k++) {
-						a[k] += c[i][k];
+                                                //o processo que esta bloqueado é colocado junto com o recurso com o que faz o bloquear no vetor a
+                                                a[k] += c[i][k];
 						c[i][k] = 0;
 					}
+                                        
 					finishedProcesses++;
 					runnableProcesses++;
 					r[i] = -2;
 				}
 			}
+                        //repete isso até percorrer todos os recurssos
 		} while(n - finishedProcesses > 1 && runnableProcesses > 0);
+            //não há deadlock
             if(n - finishedProcesses <= 1) {
 			return null;
 		}
 
 		ArrayList<Integer> processesInDeadlock = new ArrayList<Integer>();
+                //há deadlock
 		for(int i = 0; i < n; i++) {
 			if(r[i] >= 0) {
 				processesInDeadlock.add(this.processes.get(i).getPid());
@@ -141,7 +154,7 @@ public class SystemOperacional extends Thread {
 
 	}
 
- 
+ //função para organizar o print
 	private String deadlockString(ArrayList<Integer> pids) {
 		String str = "Deadlock:";
 		for(Integer pid : pids) {
@@ -156,27 +169,26 @@ public class SystemOperacional extends Thread {
         public boolean killProcessAtIndex(int id) throws InterruptedException {
 
 		mutex.acquire();
+		Processos process = this.processes.get(id);
 
-		// Obtendo os recursos usadas pelo processo
-		int[] resourcesIndexes = this.processes.get(id).getResourcesInstances();
-
-
-		//mato o processo pela id
-		this.processes.get(id).kill();
-                //tiro ele da fila
 		this.processes.remove(id);
+                        //setando a varivel keepAlive para false
+		process.kill();
 
-		// libero os recursos que perteciam ao processo
-		for(int i = 0; i < resourcesIndexes.length; i++) {
-			this.resources.get(i).incrementInstances();
-			this.resources.get(i).liberarRecurso(resourcesIndexes[i]);
+		// se o processo tiver bloquero
+		if(process.getPedidoatual() >= 0) {
+                        //incrementa a variavel dos processos que foram mortos
+			this.resources.get(process.getPedidoatual()).deadProcesses++;
+
+			//incrementa o semafaro do recurso que ele tinha
+			this.resources.get(process.getPedidoatual()).liberarRecurso();
 		}
 
-		boolean empty = this.processes.isEmpty();
+		
 		
                 mutex.release();
-
-		return empty;
+                
+		return true;
 
 	}
         
@@ -198,12 +210,13 @@ public class SystemOperacional extends Thread {
 
 	
 		ArrayList<Integer> possible = new ArrayList<>();
-		for(int j = 0; j < this.resources.size(); j++) {
-			if(process.obterRecursos()[j] < this.resources.get(j).getQuant()) {
+		//põe em uma lista aqueles recursos que podem ainda ser sorteados
+                for(int j = 0; j < this.resources.size(); j++) {
+			if(process.getRecursos()[j] < this.resources.get(j).getQuant()) {
 				possible.add(j);
 			}
 		}
-
+                    //verificação   
 		if(possible.isEmpty()) {
 			return -1;
 		}
