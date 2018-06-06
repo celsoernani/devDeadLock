@@ -7,6 +7,7 @@ package dreaddetection;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+
 
 /**
  * FXML Controller class
@@ -32,99 +33,90 @@ import javafx.stage.Stage;
  */
 public class TelaGrafoController implements Initializable  {
     @FXML
-    private AnchorPane AncoraP6;
+    public AnchorPane AncoraP6;
 
     @FXML
-    private TextField SolNew;
+    public TextField SolNew;
 
     @FXML
-    private TextField UtiNew;
+    public TextField UtiNew;
 
     @FXML
-    private TextArea Log;
+    public TextArea Log;
 
     @FXML
-    private AnchorPane AncoraP61;
+    public AnchorPane AncoraP61;
 
     @FXML
-    private TextField idRemove;
+    public TextField idRemove;
 
     @FXML
-    private ImageView Processo1;
+    public ImageView Processo1;
 
     @FXML
-    private ImageView Processo2;
+    public ImageView Processo2;
 
     @FXML
-    private ImageView Processo3;
+    public ImageView Processo3;
 
     @FXML
-    private ImageView Processo4;
+    public ImageView Processo4;
 
     @FXML
-    private ImageView Processo5;
+    public ImageView Processo5;
 
     @FXML
-    private ImageView Processo6;
+    public ImageView Processo6;
 
     @FXML
-    private ImageView Processo7;
+    public ImageView Processo7;
 
     @FXML
-    private ImageView Processo8;
+    public ImageView Processo8;
 
     @FXML
-    private ImageView Processo9;
+    public ImageView Processo9;
 
     @FXML
-    private ImageView Processo10;
+    public ImageView Processo10;
 
     @FXML
-    private ImageView Recurso1;
+    public ImageView Recurso1;
 
     @FXML
-    private ImageView Recurso2;
+    public ImageView Recurso2;
 
     @FXML
-    private ImageView Recurso3;
+    public ImageView Recurso3;
 
     @FXML
-    private ImageView Recurso4;
+    public ImageView Recurso4;
 
     @FXML
-    private ImageView Recurso5;
+    public ImageView Recurso5;
 
     @FXML
-    private ImageView Recurso6;
+    public ImageView Recurso6;
 
     @FXML
-    private ImageView Recurso7;
+    public ImageView Recurso7;
 
     @FXML
-    private ImageView Recurso8;
+    public ImageView Recurso8;
 
     @FXML
-    private ImageView Recurso9;
+    public ImageView Recurso9;
 
     @FXML
-    private ImageView Recurso10;
+    public ImageView Recurso10;
     
     @FXML
-    private Button buttonRemoveProcesso;
+    public Button buttonRemoveProcesso;
     
     @FXML
-    private Button buttonAddProcesso;
-
-
+    public Button buttonAddProcesso;
     
-    private SystemOperacional operationalSystem; 
-
- 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
-    
+    @FXML
     private void CriarProcesso(ActionEvent event) throws IOException {
         
         if(SolNew.getText().isEmpty() || UtiNew.getText().isEmpty())
@@ -135,8 +127,36 @@ public class TelaGrafoController implements Initializable  {
                 alert.setContentText("Digite os campos necessários.");
                 alert.showAndWait();
 		}
-                
+        else{
+                Processos process = new Processos(this.operationalSystem, Integer.parseInt(UtiNew.getText().trim()), Integer.parseInt(SolNew.getText().trim()),this.resources.size(),this);
+		operationalSystem.addProcess(process);
+		process.start();
+		this.buttonRemoveProcesso.setDisable(false);
+        }
+               
     }
+   public ArrayList<Recursos> resources;
+    public int time;
+    SystemOperacional operationalSystem;
+      
+    
+public TelaGrafoController(int time , ArrayList<Recursos> resources){
+        this.resources = resources;
+        this.time = time;
+
+}
+ 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+       
+                operationalSystem = new SystemOperacional(this.time, this);
+		operationalSystem.addResources(resources);
+                operationalSystem.start();
+
+	}
+        
+  
+    
     
     
 }

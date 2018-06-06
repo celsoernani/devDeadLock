@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -61,7 +62,7 @@ public class Tela2Controller implements Initializable {
         private int tempo;
         private ArrayList<String> resourcesNames = new ArrayList<>();
         private ArrayList<String> resourcesQuantity = new ArrayList<>();
-        private ArrayList<Recursos> recursos = new ArrayList<Recursos>();
+        private ArrayList<Recursos> recursos = new ArrayList<>();
     
         
         public  Tela2Controller(int quant_recursos){
@@ -70,18 +71,37 @@ public class Tela2Controller implements Initializable {
 
      @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
+    
+		ArrayList<Recursos> recursos = buildResources();
+                
+            
+		if(recursos != null) {
+                    
                 tempo = Integer.parseInt(time.getText());
-                FXMLLoader TelaGrafo = new FXMLLoader(getClass().getResource("TelaGrafo.fxml"));
-               //TODO parametrizar "TelaGrafoController
-                TelaGrafo.setController(new TelaGrafoController());
+                FXMLLoader TelaGrafo = new FXMLLoader(getClass().getResource("TelaGrafo.fxml")); 
+                TelaGrafo.setController(new TelaGrafoController(tempo,recursos));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(TelaGrafo.load()));
                 stage.show();
+			
+
+		} else {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("ERRO");
+                alert.setHeaderText(null);
+                alert.setContentText(" Valores inválidos! ");
+                alert.showAndWait();
+		}
+        
+                
+               
     }
     
      @FXML
     private void RecursosSetup(ActionEvent event) throws IOException {
+        //interface
         NameRecurso.setText("Recurso "+(contrec+2));
+        
         RecursosSetup();
         contrec++;
         if(contrec == quant_recursos){
@@ -97,12 +117,13 @@ public class Tela2Controller implements Initializable {
     private void RecursosSetup(){
         	resourcesNames.add(Nome1.getText());
                 resourcesQuantity.add("1");
+             
                   
     }
     
     private ArrayList<Recursos> buildResources() {
               
-		ArrayList<Recursos> resources = new ArrayList<Recursos>();
+		ArrayList<Recursos> resources = new ArrayList<>();
 		int amount;
 
 		for(int i=0; i<this.quant_recursos; i++) {

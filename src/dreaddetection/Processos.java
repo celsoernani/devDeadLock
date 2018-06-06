@@ -13,9 +13,9 @@ import java.util.logging.Logger;
  *
  * @author celso
  */
-public class Processos implements Runnable{
+public class Processos extends Thread{
     
-    private static int lastPid = 0;
+    private static int lastPid = 1;
     private int Pid;
     //recursos já realizados
     private LinkedList<Recursos> resourcesHeld = new LinkedList<>();
@@ -28,15 +28,17 @@ public class Processos implements Runnable{
     private int currentRequest = -1;
     private SystemOperacional sistemaOperacional;
     private boolean keepAlive = true;
+    private final TelaGrafoController telagrafo;
     Semaphore mutex = new Semaphore(1);
     
     
     //construtor
-    public Processos(SystemOperacional so,int processUsageTime, int processRequestTime, int numRecursos){
+    public Processos(SystemOperacional so,int processUsageTime, int processRequestTime, int numRecursos,  TelaGrafoController telagrafo){
         this.Pid = lastPid++;
         this.processRequestTime = processRequestTime;
         this.processUsageTime = processUsageTime;
         this.recursos = new int[numRecursos];
+        this.telagrafo = telagrafo;
         this.sistemaOperacional = so;
     } 
     
@@ -67,14 +69,15 @@ public class Processos implements Runnable{
                 
                                     //sorteia o processo aleatoriamente 
                                     currentRequest  =sistemaOperacional.randomRecurse(this.Pid);
+                                  
                    if(currentRequest >= 0) {
                                 //fila de recursos recebe o recursso atual
-                            requestedResouce = this.sistemaOperacional.getResourceById(currentRequest + 1);
-                            System.out.println( "P"+this.Pid+" solicitou "+requestedResouce.getName());
+                            requestedResouce = sistemaOperacional.getResourceById(currentRequest + 1);
+                            telagrafo.Log.appendText("P"+this.Pid+" solicitou "+requestedResouce.getName());
                             //se não houver processos disponiveis bloqueia o processo
                            if(requestedResouce.getAvailableInstances() == 0)
 					{
-						System.out.println("P"+this.Pid+" bloqueiou com  "+requestedResouce.getName());	
+						telagrafo.Log.appendText("P"+this.Pid+" bloqueiou com  "+requestedResouce.getName());	
 					}
 
                     try {
@@ -99,7 +102,7 @@ public class Processos implements Runnable{
 						currentRequest = -1;
 
 						//process runs for a certain amount of time
-						System.out.println( "P"+this.Pid+" roda com "+requestedResouce.getName());
+						telagrafo.Log.appendText( "P"+this.Pid+" roda com "+requestedResouce.getName());
 
                                 try {
                                     mutex.acquire();
@@ -129,7 +132,7 @@ public class Processos implements Runnable{
                         if(aux2!=-1)
 			{
 				// Logging the resource release
-				System.out.println("P"+this.Pid + " liberou " + resourcesHeld.get(aux2).getName());
+				telagrafo.Log.appendText("P"+this.Pid + " liberou " + resourcesHeld.get(aux2).getName());
 
 				// Removing resource data from the arrays
 				resourcesTimes.remove(aux2);
@@ -143,7 +146,7 @@ public class Processos implements Runnable{
 				resourcesHeld.remove(aux2);
 			}
                    }
-                    System.out.println("P" + this.Pid + " finalizou");
+                    telagrafo.Log.appendText("P" + this.Pid + " finalizou");
                     
             }
                   

@@ -16,16 +16,19 @@ import java.util.logging.Logger;
  *
  * @author celso
  */
-public class SystemOperacional implements Runnable {
+public class SystemOperacional extends Thread {
     
         Semaphore mutex = new Semaphore(1);
 	private ArrayList<Recursos> resources = new ArrayList<Recursos>();
 	private ArrayList<Processos> processes = new ArrayList<Processos>();
 	private int time;
+        private final TelaGrafoController telagrafo;
+        String lastDead = "";
         
         
-        public SystemOperacional(int tempo) {
+        public SystemOperacional(int tempo, TelaGrafoController telagrafo) {
 		this.time = tempo;
+                this.telagrafo = telagrafo;
 	
 	}
 
@@ -45,12 +48,29 @@ public class SystemOperacional implements Runnable {
                             
                     //se não tiver deadlock avisa no log
 			if(deadlocks != null) {
-                           
-				System.out.println(deadlocks);
+                            
+                                String str = this.deadlockString(deadlocks);
+                                if(!str.equals(this.lastDead)) {
+					this.lastDead = str;
+					this.telagrafo.Log.appendText(this.deadlockString(deadlocks));
+				}
+                                else{
+                                
+                                    if(this.lastDead.equals("")) {
+					this.lastDead = "";
+					this.telagrafo.Log.appendText("Morreu o Deadlock \n");
+				}
+                                    
+                                }
 			}
+                        else{
+                            this.telagrafo.Log.appendText("Sem Deadlock \n");
+                        
+                        }
+                       
 
             try {
-                sleep(this.time);
+                sleep(this.time*1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SystemOperacional.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -117,7 +137,8 @@ public class SystemOperacional implements Runnable {
 		for(int i = 0; i < n; i++) {
 			if(r[i] >= 0) {
 				processesInDeadlock.add(this.processes.get(i).getPid());
-			}
+                             
+                        }
 		}
 
 		return processesInDeadlock;
@@ -215,12 +236,12 @@ public Recursos getResourceById(int id)
     
 
 
-	public void addResource(Recursos resource) {
-		this.resources.add(resource);
-	}
+//	public void addResource(Recursos resource) {
+//		this.resources.add(resource);
+//	}
 
 	public void addResources(ArrayList<Recursos> resources) {
-		this.resources.addAll(resources);
+		this.resources = resources;
 	}
 
 	public void addProcess(Processos process) {

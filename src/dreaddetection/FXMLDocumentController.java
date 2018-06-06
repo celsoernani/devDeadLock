@@ -16,7 +16,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
 
 /**
  *
@@ -31,7 +33,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Slider Slider;
 
-  
+    @FXML
+    private ImageView logoDeadlock;
+
     
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
