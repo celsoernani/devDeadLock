@@ -21,12 +21,12 @@ public class Processos extends Thread{
     private LinkedList<Recursos> resourcesHeld = new LinkedList<>();
     //tempo de recursos
     private ArrayList<Integer> resourcesTimes = new ArrayList<Integer>(); 
-    private int processRequestTime;
-    private int processUsageTime;
+    private final int processRequestTime;
+    private final int processUsageTime;
     private int[] recursos;
     private Recursos requestedResouce;
     private int currentRequest = -1;
-    private SystemOperacional sistemaOperacional;
+    private final SystemOperacional sistemaOperacional;
     private boolean keepAlive = true;
     private final TelaGrafoController telagrafo;
     Semaphore mutex = new Semaphore(1);
@@ -41,6 +41,8 @@ public class Processos extends Thread{
         this.telagrafo = telagrafo;
         this.sistemaOperacional = so;
         this.telagrafo.Log.appendText("Processo "+this.Pid+" criado\n");
+        desenharprocesso(this.Pid, true);
+        
         
     } 
     
@@ -51,7 +53,7 @@ public class Processos extends Thread{
         //variavel auxiliar para controle de bloqueios
         boolean foiBloqueado = false;
         //varaivel para finalizar processo/recurso
-        int finishedResource = 0;
+        int finishedResource;
         
         //variavel keepalive serve para manter o processo vivo
         while(keepAlive){
@@ -70,17 +72,19 @@ public class Processos extends Thread{
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                                    //sorteia o processo aleatoriamente 
+               
+                                    //sorteia o recurso aleatoriamente 
                                     currentRequest  =sistemaOperacional.randomRecurse(this.Pid);
                                   
                    if(currentRequest >= 0) {
-                                //fila de recursos recebe o recursso atual
+                               //fila de recursos recebe o recursso atual
                             requestedResouce = sistemaOperacional.getResourceById(currentRequest + 1);
                             telagrafo.Log.appendText("P"+this.Pid+" solicitou "+requestedResouce.getName()+"\n");
                             //se não houver processos disponiveis bloqueia o processo
+                            //TODO desenhar solicitação
                            if(requestedResouce.getRecursosDisp() == 0)
 					{
+                                                desenharstatus(this.Pid, false);
 						telagrafo.Log.appendText("P"+this.Pid+" bloqueiou com  "+requestedResouce.getName()+"\n");	
                                                  foiBloqueado = true;
                                         }
@@ -94,7 +98,7 @@ public class Processos extends Thread{
                                 } catch (InterruptedException ex) {
                                     Logger.getLogger(Processos.class.getName()).log(Level.SEVERE, null, ex);
                                 }
-                                                //solicita outro recurso e é desbloqueado
+                                              
 						if(foiBloqueado)
 						{
 							telagrafo.Log.appendText("P"+this.Pid+" desbloqueiou com  "+requestedResouce.getName()+"\n");
@@ -138,6 +142,7 @@ public class Processos extends Thread{
 
 						//process runs for a certain amount of time
 						telagrafo.Log.appendText( "P"+this.Pid+" roda com "+requestedResouce.getName()+"\n");
+                                                desenharstatus(this.Pid, true);
                                                 mutex.release();
 
 					} else {
@@ -179,11 +184,13 @@ public class Processos extends Thread{
                 //liberando os recursos
              		for(Recursos resource : this.resourcesHeld) {
 			telagrafo.Log.appendText( "P" + this.Pid + " liberou " + resource.getName()+"\n");
+                         desenharstatus(this.Pid, false);
 			resource.incrementInstances();
 			resource.liberarRecurso();
 		}
 		
 		telagrafo.Log.appendText("P" + this.Pid + " finalizou\n");
+              
 		
 	mutex.release();
 		
@@ -231,10 +238,78 @@ public class Processos extends Thread{
 		}
 
 	}
-
+        
+        private void desenharprocesso(int id, boolean draw){
+               switch (id) {
+            case 1:  telagrafo.ancoraProcesso1.setVisible(draw);
+                     break;
+            case 2:  telagrafo.ancoraProcesso2.setVisible(draw);
+                     break;
+            case 3:  telagrafo.ancoraProcesso3.setVisible(draw);
+                     break;
+            case 4:  telagrafo.ancoraProcesso4.setVisible(draw);
+                     break;
+            case 5: telagrafo.ancoraProcesso5.setVisible(draw);
+                     break;
+            case 6:  telagrafo.ancoraProcesso6.setVisible(draw);
+                     break;
+            case 7:  telagrafo.ancoraProcesso7.setVisible(draw);
+                     break;
+            case 8:  telagrafo.ancoraProcesso8.setVisible(draw);
+                     break;
+            case 9:  telagrafo.ancoraProcesso9.setVisible(draw);
+                     break;
+            case 10: telagrafo.ancoraProcesso10.setVisible(draw);
+                     break;
+   
+            default:
+                     break;
+        }
+            
+        
+        }
+     private void desenharstatus(int id, boolean status){
+               switch (id) {
+            case 1:  telagrafo.statusPro1.setVisible(status);
+                    
+                     break;
+            case 2:  telagrafo.statusPro2.setVisible(status);
+                    
+                     break;
+            case 3:  telagrafo.statusPro3.setVisible(status);
+                     
+                     break;
+            case 4:  telagrafo.statusPro4.setVisible(status);
+                    
+                     break;
+            case 5: telagrafo.statusPro5.setVisible(status);
+                 
+                     break;
+            case 6:  telagrafo.statusPro6.setVisible(status);
+              
+                     break;
+            case 7:  telagrafo.statusPro7.setVisible(status);
+                     
+                     break;
+            case 8:  telagrafo.statusPro8.setVisible(status);
+                    
+                     break;
+            case 9:  telagrafo.statusPro9.setVisible(status);
+                   
+                     break;
+            case 10: telagrafo.statusPro10.setVisible(status);
+                   
+                     break;
+   
+            default:
+                     break;
+        }
+            
+        
+        }
 
     // Getters and Setters
-        
+         
         public int[] getResourcesInstances() {
 		return recursos;
 	}

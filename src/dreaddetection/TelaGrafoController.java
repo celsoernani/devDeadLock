@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dreaddetection;
 
 import java.io.IOException;
@@ -34,11 +30,11 @@ import javafx.stage.Stage;
  * @author celso
  */
 public class TelaGrafoController implements Initializable  {
-   @FXML
+  @FXML
     public Button FIM;
 
     @FXML
-    public AnchorPane AncoraP6;
+    public AnchorPane NovoProcesso;
 
     @FXML
     public TextField SolNew;
@@ -50,10 +46,10 @@ public class TelaGrafoController implements Initializable  {
     public Button buttonAddProcesso;
 
     @FXML
-     public TextArea Log;
+    public TextArea Log;
 
     @FXML
-    public AnchorPane AncoraP61;
+    public AnchorPane ExcluirProcesso;
 
     @FXML
     public TextField idRemove;
@@ -62,154 +58,214 @@ public class TelaGrafoController implements Initializable  {
     public Button buttonRemoveProcesso;
 
     @FXML
-    public ImageView Processo2;
+    public AnchorPane ancoraProcesso1;
 
     @FXML
-    public ImageView Processo3;
+    public Label statusPro1;
 
     @FXML
-    public ImageView Processo4;
+    public ImageView imgPro1;
 
     @FXML
-    public ImageView Processo5;
+    public Label nomePro1;
 
     @FXML
-    public ImageView Processo6;
+    public AnchorPane ancoraProcesso6;
 
     @FXML
-    public ImageView Processo7;
+    public ImageView imgPro6;
 
     @FXML
-    public ImageView Processo8;
+    public Label nomePro6;
 
     @FXML
-    public ImageView Processo9;
+    public Label statusPro6;
 
     @FXML
-    public ImageView Processo10;
+    public AnchorPane ancoraProcesso7;
+
+    @FXML
+    public Label nomePro7;
+
+    @FXML
+    public Label statusPro7;
+
+    @FXML
+    public AnchorPane ancoraProcesso8;
+
+    @FXML
+    public ImageView imgPro8;
+
+    @FXML
+    public Label nomePro8;
+
+    @FXML
+    public Label statusPro8;
+
+    @FXML
+    public AnchorPane ancoraProcesso9;
+
+    @FXML
+    public ImageView imgPro9;
+
+    @FXML
+    public Label nomePro9;
+
+    @FXML
+    public Label statusPro9;
+
+    @FXML
+    public AnchorPane ancoraProcesso10;
+
+    @FXML
+    public ImageView imgPro10;
+
+    @FXML
+    public Label nomePro10;
+
+    @FXML
+    public Label statusPro10;
+
+    @FXML
+    public AnchorPane ancoraRecurso1;
 
     @FXML
     public ImageView Recurso1;
 
     @FXML
+    public Label nomeRec1;
+
+    @FXML
+    public AnchorPane ancoraRecurso2;
+
+    @FXML
     public ImageView Recurso2;
+
+    @FXML
+    public Label nomeRec2;
+
+    @FXML
+    public AnchorPane ancoraRecurso3;
 
     @FXML
     public ImageView Recurso3;
 
     @FXML
+    public Label nomeRec3;
+
+    @FXML
+    public AnchorPane ancoraRecurso4;
+
+    @FXML
     public ImageView Recurso4;
+
+    @FXML
+    public Label nomeRec4;
+
+    @FXML
+    public AnchorPane ancoraRecurso5;
 
     @FXML
     public ImageView Recurso5;
 
     @FXML
+    public Label nomeRec5;
+
+    @FXML
+    public AnchorPane ancoraRecurso6;
+
+    @FXML
     public ImageView Recurso6;
+
+    @FXML
+    public Label nomeRec6;
+
+    @FXML
+    public AnchorPane ancoraRecurso7;
 
     @FXML
     public ImageView Recurso7;
 
     @FXML
+    public Label nomeRec7;
+
+    @FXML
+    public AnchorPane ancoraRecurso8;
+
+    @FXML
     public ImageView Recurso8;
+
+    @FXML
+    public Label nomeRec8;
+
+    @FXML
+    public AnchorPane ancoraRecurso9;
 
     @FXML
     public ImageView Recurso9;
 
     @FXML
+    public Label nomeRec9;
+
+    @FXML
+    public AnchorPane ancoraRecurso10;
+
+    @FXML
     public ImageView Recurso10;
 
     @FXML
-    public Label lblProcesso2;
+    public Label nomeRec10;
 
     @FXML
     public Label lblProcesso3;
 
     @FXML
-    public Label lblProcesso4;
+    public AnchorPane ancoraProcesso2;
 
     @FXML
-    public Label lblProcesso5;
+    public Label statusPro2;
 
     @FXML
-    public Label lblProcesso6;
+    public ImageView imgPro2;
 
     @FXML
-    public Label lblProcesso7;
+    public Label nomePro2;
 
     @FXML
-    public Label lblProcesso8;
+    public AnchorPane ancoraProcesso3;
 
     @FXML
-    public Label lblProcesso9;
+    public Label statusPro3;
 
     @FXML
-    public Label lblProcesso10;
+    public ImageView imgPro3;
 
     @FXML
-    public Label lblRecurso1;
+    public Label nomePro3;
 
     @FXML
-    public Label lblRecurso2;
+    public AnchorPane ancoraProcesso4;
 
     @FXML
-    public Label lblRecurso3;
+    public Label statusPro4;
 
     @FXML
-    public Label lblRecurso4;
+    public ImageView imgPro4;
 
     @FXML
-    public Label lblRecurso5;
+    public Label nomePro4;
 
     @FXML
-    public Label lblRecurso6;
+    public AnchorPane ancoraProcesso5;
 
     @FXML
-    public Label lblRecurso7;
+    public Label statusPro5;
 
     @FXML
-    public Label lblRecurso8;
+    public ImageView imgPro5;
 
     @FXML
-    public Label lblRecurso9;
-
-    @FXML
-    public Label lblRecurso10;
-
-    @FXML
-    public Label StsProcesso2;
-
-    @FXML
-    public Label StsProcesso3;
-
-    @FXML
-    public Label StsProcesso4;
-
-    @FXML
-    public Label StsProcesso5;
-
-    @FXML
-    public Label StsProcesso6;
-
-    @FXML
-    public Label StsProcesso7;
-
-    @FXML
-    public Label StsProcesso8;
-
-    @FXML
-    public Label StsProcesso9;
-
-    @FXML
-    public Label StsProcesso10;
-
-    @FXML
-    public ImageView Processo1;
-
-    @FXML
-    public Label lblProcesso1;
-
-    @FXML
-    public Label StsProcesso1;
+    public Label nomePro5;
     
     
     @FXML
@@ -224,9 +280,10 @@ public class TelaGrafoController implements Initializable  {
                 alert.showAndWait();
 		}
         else{
-                Processos process = new Processos(this.operationalSystem, Integer.parseInt(UtiNew.getText().trim()), Integer.parseInt(SolNew.getText().trim()),this.resources.size(),this);
-		operationalSystem.addProcess(process);
-		process.start();
+                Processos newprocesso = new Processos(this.operationalSystem, Integer.parseInt(UtiNew.getText().trim()), Integer.parseInt(SolNew.getText().trim()),this.resources.size(),this);
+		operationalSystem.addProcess(newprocesso);
+  
+		newprocesso.start();
 		this.buttonRemoveProcesso.setDisable(false);
         }
                
@@ -234,8 +291,12 @@ public class TelaGrafoController implements Initializable  {
     
      @FXML
     private void excluirProcesso(ActionEvent event) throws IOException, InterruptedException {
-        
-       this.operationalSystem.killProcessAtIndex(Integer.parseInt(idRemove.getText()));
+        if(idRemove.getText() != null) {
+				
+				int pid = Integer.parseInt(idRemove.getText());
+                                final int index = this.operationalSystem.getindexProcess(pid);
+                                 this.operationalSystem.killProcessAtIndex(index);
+                   }
     }
     
      @FXML
@@ -263,9 +324,99 @@ public TelaGrafoController(int time , ArrayList<Recursos> resources){
        
                 operationalSystem = new SystemOperacional(this.time, this);
 		operationalSystem.addResources(this.resources);
+                desenharRecursos(this.resources.size());
                 operationalSystem.start();
 
 	}
+    
+    
+    
+      private void desenharRecursos(int quant){
+               switch (quant) {
+            case 1:  ancoraRecurso1.setVisible(true);
+                     break;
+            case 2:
+                
+                      ancoraRecurso1.setVisible(true);
+                    ancoraRecurso2.setVisible(true);
+                     break;
+            case 3: 
+                ancoraRecurso1.setVisible(true);
+                ancoraRecurso2.setVisible(true);
+                ancoraRecurso3.setVisible(true);
+                     break;
+            case 4:  
+                ancoraRecurso1.setVisible(true);
+                ancoraRecurso2.setVisible(true);
+                ancoraRecurso3.setVisible(true);
+                ancoraRecurso4.setVisible(true);
+                     break;
+            case 5: 
+                ancoraRecurso1.setVisible(true);
+                ancoraRecurso2.setVisible(true);
+                ancoraRecurso3.setVisible(true);
+                ancoraRecurso4.setVisible(true);
+                ancoraRecurso5.setVisible(true);
+                     break;
+            case 6:  
+                ancoraRecurso1.setVisible(true);
+                ancoraRecurso2.setVisible(true);
+                ancoraRecurso3.setVisible(true);
+                ancoraRecurso4.setVisible(true);
+                ancoraRecurso5.setVisible(true);
+                ancoraRecurso6.setVisible(true);
+                     break;
+            case 7:  
+                ancoraRecurso1.setVisible(true);
+                ancoraRecurso2.setVisible(true);
+                ancoraRecurso3.setVisible(true);
+                ancoraRecurso4.setVisible(true);
+                ancoraRecurso5.setVisible(true);
+                ancoraRecurso6.setVisible(true);
+                ancoraRecurso7.setVisible(true);
+                     break;
+            case 8:  
+                ancoraRecurso1.setVisible(true);
+                ancoraRecurso2.setVisible(true);
+                ancoraRecurso3.setVisible(true);
+                ancoraRecurso4.setVisible(true);
+                ancoraRecurso5.setVisible(true);
+                ancoraRecurso6.setVisible(true);
+                ancoraRecurso7.setVisible(true);
+                ancoraRecurso8.setVisible(true);
+                     break;
+            case 9:  
+                ancoraRecurso1.setVisible(true);
+                ancoraRecurso2.setVisible(true);
+                ancoraRecurso3.setVisible(true);
+                ancoraRecurso4.setVisible(true);
+                ancoraRecurso5.setVisible(true);
+                ancoraRecurso6.setVisible(true);
+                ancoraRecurso7.setVisible(true);
+                ancoraRecurso8.setVisible(true);
+                ancoraRecurso9.setVisible(true);
+                     break;
+            case 10:
+                ancoraRecurso1.setVisible(true);
+                ancoraRecurso2.setVisible(true);
+                ancoraRecurso3.setVisible(true);
+                ancoraRecurso4.setVisible(true);
+                ancoraRecurso5.setVisible(true);
+                ancoraRecurso6.setVisible(true);
+                ancoraRecurso7.setVisible(true);
+                ancoraRecurso8.setVisible(true);
+                ancoraRecurso9.setVisible(true);
+                ancoraRecurso10.setVisible(true);
+                     break;
+   
+            default:
+                     break;
+        }
+            
+
+}
+      
+
         
   
     

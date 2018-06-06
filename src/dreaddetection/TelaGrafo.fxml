@@ -12,11 +12,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="745.0" style="-fx-background-color: FFFD59;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="FIM" layoutX="286.0" layoutY="331.0" mnemonicParsing="false" onAction="#acabarTudo" prefHeight="37.0" prefWidth="206.0" text="Parar Simulação" textFill="#a559ff" textOverrun="CENTER_ELLIPSIS">
+      <Button fx:id="FIM" layoutX="286.0" layoutY="331.0" mnemonicParsing="false" onAction="#acabarTudo" prefHeight="37.0" prefWidth="206.0" text="Parar Execução" textFill="#a559ff" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <AnchorPane fx:id="AncoraP6" layoutX="488.0" layoutY="403.0" prefHeight="143.0" prefWidth="145.0">
+      <AnchorPane fx:id="NovoProcesso" layoutX="488.0" layoutY="403.0" prefHeight="143.0" prefWidth="145.0">
          <children>
             <TextField fx:id="SolNew" layoutX="13.0" layoutY="71.0" prefHeight="26.0" prefWidth="43.0" />
             <Text fill="#4f4747" layoutX="3.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solicitação" textAlignment="CENTER" wrappingWidth="68.38153195381165">
@@ -41,7 +41,7 @@
       </AnchorPane>
       <TextArea fx:id="Log" layoutY="403.0" prefHeight="143.0" prefWidth="488.0" />
       <ImageView fitHeight="55.0" fitWidth="59.0" layoutX="33.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane fx:id="AncoraP61" layoutX="618.0" layoutY="403.0" prefHeight="143.0" prefWidth="145.0">
+      <AnchorPane fx:id="ExcluirProcesso" layoutX="618.0" layoutY="403.0" prefHeight="143.0" prefWidth="145.0">
          <children>
             <Label layoutX="20.0" layoutY="14.0" text="Excluir Processo" textAlignment="CENTER" textFill="#4f4747">
                <font>
@@ -59,83 +59,260 @@
                </font></Button>
          </children>
       </AnchorPane>
-      <ImageView fx:id="Processo2" fitHeight="55.0" fitWidth="59.0" layoutX="103.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Blogger.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="Processo3" fitHeight="55.0" fitWidth="59.0" layoutX="178.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Chat.png" />
-         </image></ImageView>
-      <ImageView fx:id="Processo4" fitHeight="55.0" fitWidth="59.0" layoutX="249.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Facebook.png" />
-         </image></ImageView>
-      <ImageView fx:id="Processo5" fitHeight="55.0" fitWidth="59.0" layoutX="321.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Gmail.png" />
-         </image></ImageView>
-      <ImageView fx:id="Processo6" fitHeight="55.0" fitWidth="59.0" layoutX="392.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Illustrator.png" />
-         </image></ImageView>
-      <ImageView fx:id="Processo7" fitHeight="55.0" fitWidth="59.0" layoutX="465.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Linkedin.png" />
-         </image></ImageView>
-      <ImageView fx:id="Processo8" fitHeight="55.0" fitWidth="59.0" layoutX="539.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Photoshop.png" />
-         </image></ImageView>
-      <ImageView fx:id="Processo9" fitHeight="55.0" fitWidth="59.0" layoutX="613.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Pinterest.png" />
-         </image></ImageView>
-      <ImageView fx:id="Processo10" fitHeight="55.0" fitWidth="59.0" layoutX="685.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Twitter.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso1" fitHeight="55.0" fitWidth="59.0" layoutX="33.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Banco.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso2" fitHeight="55.0" fitWidth="59.0" layoutX="104.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Hd.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso3" fitHeight="55.0" fitWidth="59.0" layoutX="179.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Impressora.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso4" fitHeight="55.0" fitWidth="59.0" layoutX="259.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Monitor.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso5" fitHeight="55.0" fitWidth="59.0" layoutX="330.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Pendrive.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso6" fitHeight="55.0" fitWidth="59.0" layoutX="405.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Processador.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso7" fitHeight="55.0" fitWidth="59.0" layoutX="484.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Ram.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso8" fitHeight="55.0" fitWidth="59.0" layoutX="555.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Rato.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso9" fitHeight="55.0" fitWidth="59.0" layoutX="622.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Teclado.png" />
-         </image></ImageView>
-      <ImageView fx:id="Recurso10" fitHeight="55.0" fitWidth="59.0" layoutX="693.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Recursos/Webcam.png" />
-         </image></ImageView>
+      <AnchorPane fx:id="ancoraProcesso1" layoutX="29.0" layoutY="11.0" prefHeight="95.0" prefWidth="60.0" visible="false">
+         <children>
+            <Label id="lblStatusPro1" fx:id="statusPro1" layoutX="9.0" layoutY="7.0" prefHeight="15.0" prefWidth="43.0" text="Rodando" textFill="#b2b12c" visible="false">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgPro1" fitHeight="55.0" fitWidth="59.0" layoutX="3.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Adobe.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso1" fx:id="nomePro1" layoutX="10.0" layoutY="18.0" text="1.Adobe" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraProcesso6" layoutX="392.0" layoutY="10.0" visible="false">
+         <children>
+            <ImageView fx:id="imgPro6" fitHeight="55.0" fitWidth="59.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Illustrator.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso6" fx:id="nomePro6" layoutX="1.0" layoutY="18.0" text="6.Illustrator" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label id="lblProcesso1" fx:id="statusPro6" layoutX="6.0" textFill="#b2b12c">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraProcesso7" layoutX="465.0" layoutY="11.0" visible="false">
+         <children>
+            <ImageView fx:id="imgPro6" fitHeight="55.0" fitWidth="59.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Linkedin.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso7" fx:id="nomePro7" layoutX="3.0" layoutY="18.0" text="7.Linkedin" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label id="lblProcesso1" fx:id="statusPro7" layoutX="7.0" textFill="#b2b12c">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraProcesso8" layoutX="537.0" layoutY="11.0" visible="false">
+         <children>
+            <ImageView fx:id="imgPro8" fitHeight="55.0" fitWidth="59.0" layoutX="2.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Photoshop.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso8" fx:id="nomePro8" layoutY="17.0" text="8.PhotoShop" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label id="lblProcesso1" fx:id="statusPro8" layoutX="9.0" textFill="#b2b12c">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraProcesso9" layoutX="613.0" layoutY="10.0" visible="false">
+         <children>
+            <ImageView fx:id="imgPro9" fitHeight="55.0" fitWidth="59.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Pinterest.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso9" fx:id="nomePro9" layoutX="1.0" layoutY="19.0" text="9.Pinterest" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label id="lblProcesso1" fx:id="statusPro9" layoutX="7.0" textFill="#b2b12c">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraProcesso10" layoutX="685.0" layoutY="11.0" visible="false">
+         <children>
+            <ImageView fx:id="imgPro10" fitHeight="55.0" fitWidth="59.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Twitter.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso10" fx:id="nomePro10" layoutX="3.0" layoutY="18.0" text="10.Twitter" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label id="lblProcesso1" fx:id="statusPro10" layoutX="6.0" textFill="#b2b12c">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso1" layoutX="33.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso1" fitHeight="55.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Banco.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso1" fx:id="nomeRec1" layoutX="12.0" layoutY="58.0" text="Banco" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso2" layoutX="104.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso2" fitHeight="55.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Hd.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso2" fx:id="nomeRec2" layoutX="18.0" layoutY="58.0" text="HD" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso3" layoutX="179.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso3" fitHeight="55.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Impressora.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso3" fx:id="nomeRec3" layoutX="2.0" layoutY="58.0" text="Impressora" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso4" layoutX="259.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso4" fitHeight="55.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Monitor.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso5" fx:id="nomeRec4" layoutX="6.0" layoutY="58.0" text="Monitor" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso5" layoutX="330.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso5" fitHeight="55.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Pendrive.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso4" fx:id="nomeRec5" layoutX="6.0" layoutY="58.0" text="PenDrive" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso6" layoutX="404.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso6" fitHeight="55.0" fitWidth="59.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Processador.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso6" fx:id="nomeRec6" layoutY="58.0" text="Processador" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso7" layoutX="484.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso7" fitHeight="55.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Ram.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso7" fx:id="nomeRec7" layoutX="16.0" layoutY="58.0" text="RAM" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso8" layoutX="555.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso8" fitHeight="55.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Rato.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso8" fx:id="nomeRec8" layoutX="16.0" layoutY="58.0" text="Rato" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso9" layoutX="622.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso9" fitHeight="55.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Teclado.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso9" fx:id="nomeRec9" layoutX="9.0" layoutY="58.0" text="Teclado" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraRecurso10" layoutX="693.0" layoutY="198.0" visible="false">
+         <children>
+            <ImageView fx:id="Recurso10" fitHeight="55.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Recursos/Webcam.png" />
+               </image>
+            </ImageView>
+            <Label id="lblRecurso10" fx:id="nomeRec10" layoutX="6.0" layoutY="58.0" text="WebCam" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
       <Label layoutX="11.0" layoutY="379.0" text="Tela do Log" textAlignment="CENTER" textFill="#b2b12c" textOverrun="CLIP">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -146,160 +323,86 @@
             <Image url="@Imagens/Logo%20Menor.png" />
          </image>
       </ImageView>
-      <Label id="lblProcesso2" fx:id="lblProcesso2" layoutX="109.0" layoutY="29.0" text="2.Blogger" textFill="#4f4747" visible="false">
+      <Label id="lblProcesso3" fx:id="lblProcesso3" layoutX="192.0" layoutY="29.0" textFill="#4f4747">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label id="lblProcesso3" fx:id="lblProcesso3" layoutX="192.0" layoutY="29.0" text="3.Chat" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso4" fx:id="lblProcesso4" layoutX="250.0" layoutY="28.0" text="4.Facebook" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso5" fx:id="lblProcesso5" layoutX="330.0" layoutY="28.0" text="5.Gmail" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso6" fx:id="lblProcesso6" layoutX="393.0" layoutY="28.0" text="6.Illustrator" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso7" fx:id="lblProcesso7" layoutX="468.0" layoutY="29.0" text="7.Linkedin" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso8" fx:id="lblProcesso8" layoutX="537.0" layoutY="28.0" text="8.PhotoShop" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso9" fx:id="lblProcesso9" layoutX="614.0" layoutY="29.0" text="9.Pinterest" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso10" fx:id="lblProcesso10" layoutX="688.0" layoutY="29.0" text="10.Twitter" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso1" fx:id="lblRecurso1" layoutX="45.0" layoutY="256.0" text="Banco" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso2" fx:id="lblRecurso2" layoutX="122.0" layoutY="256.0" text="HD" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso3" fx:id="lblRecurso3" layoutX="181.0" layoutY="256.0" text="Impressora" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso4" fx:id="lblRecurso4" layoutX="336.0" layoutY="256.0" text="PenDrive" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso5" fx:id="lblRecurso5" layoutX="265.0" layoutY="256.0" text="Monitor" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso6" fx:id="lblRecurso6" layoutX="404.0" layoutY="256.0" text="Processador" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso7" fx:id="lblRecurso7" layoutX="500.0" layoutY="256.0" text="RAM" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso8" fx:id="lblRecurso8" layoutX="571.0" layoutY="256.0" text="Rato" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso9" fx:id="lblRecurso9" layoutX="631.0" layoutY="256.0" text="Teclado" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblRecurso10" fx:id="lblRecurso10" layoutX="699.0" layoutY="256.0" text="WebCam" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso2" layoutX="110.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso3" layoutX="185.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso4" layoutX="256.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso5" layoutX="328.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso6" layoutX="398.0" layoutY="10.0" text="Status" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso7" layoutX="472.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso8" layoutX="546.0" layoutY="11.0" text="Status" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso9" layoutX="620.0" layoutY="10.0" text="Status" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso10" layoutX="694.0" layoutY="11.0" text="Status" textAlignment="CENTER" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="Processo1" fitHeight="55.0" fitWidth="59.0" layoutX="28.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@Imagens/Processos/Adobe.png" />
-         </image>
-      </ImageView>
-      <Label id="lblProcesso1" fx:id="lblProcesso1" layoutX="36.0" layoutY="28.0" text="1.Adobe" textFill="#4f4747" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label id="lblProcesso1" fx:id="StsProcesso1" layoutX="40.0" layoutY="10.0" text="Status" textFill="#b2b12c" visible="false">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
+      <AnchorPane fx:id="ancoraProcesso2" layoutX="101.0" layoutY="12.0" prefHeight="95.0" prefWidth="60.0" visible="false">
+         <children>
+            <Label id="lblProcesso1" fx:id="statusPro2" layoutX="10.0" textFill="#b2b12c">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgPro2" fitHeight="55.0" fitWidth="59.0" layoutX="3.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Blogger.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso1" fx:id="nomePro2" layoutX="8.0" layoutY="18.0" text="2.Blogger" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraProcesso3" layoutX="174.0" layoutY="13.0" prefHeight="95.0" prefWidth="60.0" visible="false">
+         <children>
+            <Label id="lblProcesso1" fx:id="statusPro3" layoutX="10.0" textFill="#b2b12c">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgPro3" fitHeight="55.0" fitWidth="59.0" layoutX="3.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Chat.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso1" fx:id="nomePro3" layoutX="16.0" layoutY="18.0" text="3.Chat" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraProcesso4" layoutX="246.0" layoutY="12.0" prefHeight="95.0" prefWidth="60.0" visible="false">
+         <children>
+            <Label id="lblProcesso1" fx:id="statusPro4" layoutX="10.0" textFill="#b2b12c">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgPro4" fitHeight="55.0" fitWidth="59.0" layoutX="3.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Facebook.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso1" fx:id="nomePro4" layoutX="5.0" layoutY="18.0" text="4.facebook" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ancoraProcesso5" layoutX="318.0" layoutY="12.0" prefHeight="95.0" prefWidth="60.0" visible="false">
+         <children>
+            <Label id="lblProcesso1" fx:id="statusPro5" layoutX="10.0" textFill="#b2b12c">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgPro5" fitHeight="55.0" fitWidth="59.0" layoutX="3.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/Processos/Gmail.png" />
+               </image>
+            </ImageView>
+            <Label id="lblProcesso1" fx:id="nomePro5" layoutX="13.0" layoutY="18.0" text="5.Gmail" textFill="#4f4747">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

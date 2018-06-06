@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dreaddetection;
 
 import static java.lang.Thread.sleep;
@@ -63,10 +58,10 @@ public class SystemOperacional extends Thread {
                                     
                                 }
 			}
-                      //enquanto nao ocorre deadlock  
-//                        else{
-//                            this.telagrafo.Log.appendText("Sem Deadlock \n");
-//                        }
+                    //  enquanto nao ocorre deadlock  
+                        else{
+                            this.telagrafo.Log.appendText("Sem Deadlock \n");
+                        }
                        
 
             try {
@@ -165,8 +160,8 @@ public class SystemOperacional extends Thread {
        
  
 //Elimina o processo no índice fornecido.
-// se matar todos os processos, retorna verdaderiro 
-        public boolean killProcessAtIndex(int id) throws InterruptedException {
+
+        public void killProcessAtIndex(int id) throws InterruptedException {
 
 		mutex.acquire();
 		Processos process = this.processes.get(id);
@@ -175,7 +170,7 @@ public class SystemOperacional extends Thread {
                         //setando a varivel keepAlive para false
 		process.kill();
 
-		// se o processo tiver bloquero
+		// se o processo tiver bloqueado
 		if(process.getPedidoatual() >= 0) {
                         //incrementa a variavel dos processos que foram mortos
 			this.resources.get(process.getPedidoatual()).deadProcesses++;
@@ -183,14 +178,18 @@ public class SystemOperacional extends Thread {
 			//incrementa o semafaro do recurso que ele tinha
 			this.resources.get(process.getPedidoatual()).liberarRecurso();
 		}
+             
+                telagrafo.Log.appendText("O processo "+(id+1)+" morreu\n");
+                desenharprocesso(id+1, false);
+                
 
 		
 		
                 mutex.release();
                 
-		return true;
 
 	}
+        //sorteia um recurso
         
 
    public int randomRecurse(int id) {
@@ -245,12 +244,11 @@ public Recursos getResourceById(int id)
     
 
 
-//	public void addResource(Recursos resource) {
-//		this.resources.add(resource);
-//	}
+
 
 	public void addResources(ArrayList<Recursos> resources) {
 		this.resources = resources;
+               
 	}
 
 	public void addProcess(Processos process) {
@@ -259,7 +257,7 @@ public Recursos getResourceById(int id)
 	}
 
 	public void addProcesses(ArrayList<Processos> processes) {
-		this.processes.addAll(processes);
+		this.processes = processes;
 	}
 
         //matar todos os processos
@@ -296,30 +294,84 @@ public Recursos getResourceById(int id)
 				return i;
 			}
 		}
-		return -1;
+               return (pid-1);
 	}
 
 	public int getProccessCount() {
 		return this.processes.size();
 	}
 
-	public Object[][] recuperarProcessos() {
-		Object[][] data = new Object[processes.size()][resources.size()];
-		int i, j;
-		for (Processos proc : processes) {
-			for(i = 0,j=0; j<resources.size();j++)
-			{
-				data[i][j] = proc.getResourcesInstances()[j];
-			}
-			i++;
-
-		}
-		return data;
-	}
-
-
    
-
+ private void desenharprocesso(int id, boolean draw){
+               switch (id) {
+            case 1:  telagrafo.ancoraProcesso1.setVisible(draw);
+                     break;
+            case 2:  telagrafo.ancoraProcesso2.setVisible(draw);
+                     break;
+            case 3:  telagrafo.ancoraProcesso3.setVisible(draw);
+                     break;
+            case 4:  telagrafo.ancoraProcesso4.setVisible(draw);
+                     break;
+            case 5: telagrafo.ancoraProcesso5.setVisible(draw);
+                     break;
+            case 6:  telagrafo.ancoraProcesso6.setVisible(draw);
+                     break;
+            case 7:  telagrafo.ancoraProcesso7.setVisible(draw);
+                     break;
+            case 8:  telagrafo.ancoraProcesso8.setVisible(draw);
+                     break;
+            case 9:  telagrafo.ancoraProcesso9.setVisible(draw);
+                     break;
+            case 10: telagrafo.ancoraProcesso10.setVisible(draw);
+                     break;
+   
+            default:
+                     break;
+        }
+            
+        
+        }
+     private void desenharstatus(int id, boolean status){
+               switch (id) {
+            case 1:  telagrafo.statusPro1.setVisible(status);
+                    
+                     break;
+            case 2:  telagrafo.statusPro2.setVisible(status);
+                    
+                     break;
+            case 3:  telagrafo.statusPro3.setVisible(status);
+                     
+                     break;
+            case 4:  telagrafo.statusPro4.setVisible(status);
+                    
+                     break;
+            case 5: telagrafo.statusPro5.setVisible(status);
+                 
+                     break;
+            case 6:  telagrafo.statusPro6.setVisible(status);
+              
+                     break;
+            case 7:  telagrafo.statusPro7.setVisible(status);
+                     
+                     break;
+            case 8:  telagrafo.statusPro8.setVisible(status);
+                    
+                     break;
+            case 9:  telagrafo.statusPro9.setVisible(status);
+                   
+                     break;
+            case 10: telagrafo.statusPro10.setVisible(status);
+                   
+                     break;
+   
+            default:
+                     break;
+        }
+            
+        
+        }
+     
+    
 }
         
         
