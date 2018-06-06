@@ -73,7 +73,7 @@ public class Processos extends Thread{
                    if(currentRequest >= 0) {
                                 //fila de recursos recebe o recursso atual
                             requestedResouce = sistemaOperacional.getResourceById(currentRequest + 1);
-                            telagrafo.Log.appendText("P"+this.Pid+" solicitou "+requestedResouce.getName());
+                            telagrafo.Log.appendText("P"+this.Pid+" solicitou "+requestedResouce.getName()+"\n");
                             //se não houver processos disponiveis bloqueia o processo
                            if(requestedResouce.getAvailableInstances() == 0)
 					{

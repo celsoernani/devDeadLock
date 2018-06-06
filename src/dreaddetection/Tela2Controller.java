@@ -122,7 +122,7 @@ public class Tela2Controller implements Initializable {
     }
     
     private ArrayList<Recursos> buildResources() {
-              
+                
 		ArrayList<Recursos> resources = new ArrayList<>();
 		int amount;
 
@@ -138,7 +138,7 @@ public class Tela2Controller implements Initializable {
 				return null;
 			}
 
-			resources.add(new Recursos(this.resourcesNames.get(i).trim(), amount));
+			resources.add(new Recursos(this.resourcesNames.get(i).trim(), amount, i+1));
 		}
 
 		return resources;

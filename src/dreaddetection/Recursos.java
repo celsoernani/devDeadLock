@@ -13,9 +13,8 @@ import java.util.concurrent.Semaphore;
  * @author celso
  */
 public class Recursos {
-    
-        private static int lastId = 1;
-	private String nome;
+	
+        private String nome;
 	private int id;
         private final int quant;
         private int availableInstances;
@@ -24,11 +23,11 @@ public class Recursos {
 	
 
 	
-	public Recursos( String nome, int quant) {
+	public Recursos( String nome, int quant, int id) {
 		this.nome = nome;
                 this.quant = quant;
 		this.availableInstances = this.quant;
-		this.id = ++lastId;
+		this.id = id;
 	}
 
 	

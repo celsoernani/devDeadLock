@@ -63,10 +63,6 @@ public class SystemOperacional extends Thread {
                                     
                                 }
 			}
-                        else{
-                            this.telagrafo.Log.appendText("Sem Deadlock \n");
-                        
-                        }
                        
 
             try {
