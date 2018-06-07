@@ -18,9 +18,9 @@ public class Processos extends Thread{
     private static int lastPid = 1;
     private int Pid;
     //recursos já realizados
-    private LinkedList<Recursos> resourcesHeld = new LinkedList<>();
+    private final LinkedList<Recursos> resourcesHeld = new LinkedList<>();
     //tempo de recursos
-    private ArrayList<Integer> resourcesTimes = new ArrayList<Integer>(); 
+    private final ArrayList<Integer> resourcesTimes = new ArrayList<Integer>(); 
     private final int processRequestTime;
     private final int processUsageTime;
     private int[] recursos;
@@ -28,6 +28,7 @@ public class Processos extends Thread{
     private int currentRequest = -1;
     private final SystemOperacional sistemaOperacional;
     private boolean keepAlive = true;
+  
     private final TelaGrafoController telagrafo;
     Semaphore mutex = new Semaphore(1);
     
@@ -53,7 +54,7 @@ public class Processos extends Thread{
         //variavel auxiliar para controle de bloqueios
         boolean foiBloqueado = false;
         //varaivel para finalizar processo/recurso
-        int finishedResource;
+        int finishedResource =0;
         
         //variavel keepalive serve para manter o processo vivo
         while(keepAlive){
@@ -74,19 +75,21 @@ public class Processos extends Thread{
                 }
                
                                     //sorteia o recurso aleatoriamente 
-                                    currentRequest  =sistemaOperacional.randomRecurse(this.Pid);
+                                    this.currentRequest  = this.sistemaOperacional.randomRecurse(this.Pid);
                                   
-                   if(currentRequest >= 0) {
+                   if(this.currentRequest >= 0) {
                                //fila de recursos recebe o recursso atual
-                            requestedResouce = sistemaOperacional.getResourceById(currentRequest + 1);
-                            telagrafo.Log.appendText("P"+this.Pid+" solicitou "+requestedResouce.getName()+"\n");
+                            this.requestedResouce = this.sistemaOperacional.getResourceById(this.currentRequest + 1);
+                            telagrafo.Log.appendText("P"+this.Pid+" solicitou "+this.requestedResouce.getName()+"\n");
                             //se não houver processos disponiveis bloqueia o processo
                             //TODO desenhar solicitação
-                           if(requestedResouce.getRecursosDisp() == 0)
+                            desenhalinha(this.Pid, (this.requestedResouce.getId()-1),true,true);
+                           if(this.requestedResouce.getRecursosDisp() == 0)
 					{
                                                 desenharstatus(this.Pid, false);
-						telagrafo.Log.appendText("P"+this.Pid+" bloqueiou com  "+requestedResouce.getName()+"\n");	
+						telagrafo.Log.appendText("P"+this.Pid+" bloqueiou com  "+this.requestedResouce.getName()+"\n");	
                                                  foiBloqueado = true;
+                                                 
                                         }
 
                     mutex.release();
@@ -185,7 +188,6 @@ public class Processos extends Thread{
                 //liberando os recursos
              		for(Recursos resource : this.resourcesHeld) {
 			telagrafo.Log.appendText( "P" + this.Pid + " liberou " + resource.getName()+"\n");
-                         desenharstatus(this.Pid, false);
 			resource.incrementInstances();
 			resource.liberarRecurso();
 		}
@@ -210,6 +212,8 @@ public class Processos extends Thread{
 		resourcesHeld.get(resourceId).incrementInstances();
 		resourcesHeld.get(resourceId).liberarRecurso();
 		resourcesHeld.remove(resourceId);
+                desenharstatus(this.Pid, false);
+                desenhalinha(this.Pid, (resourcesHeld.get(resourceId).getId()),true,false);
 		
 	}
                 //matar processo
@@ -335,21 +339,117 @@ public class Processos extends Thread{
 		return this.Pid;
 	}
 
-	public void setKeepAlice(boolean b) {
-		keepAlive = false;
-
-	}
-        
+	
 
       public int[] getRecursos() {
         return recursos;
        
         }
 
+      private void desenhalinha(int id, int idrecursso, boolean drawAcnhor, boolean drawLine){
+               switch (id) {
+            case 1:  telagrafo.ancoraProcesso1.setVisible(drawAcnhor);
+                      switch (idrecursso){
+                   case 0:  telagrafo.Process11.setVisible(drawLine);
+                            break;
+                   case 1:  telagrafo.Process12.setVisible(drawLine);
+                            break;
+                   case 2:  telagrafo.Process13.setVisible(drawLine);
+                            break;
+                   case 3:  telagrafo.Process14.setVisible(drawLine);
+                            break;
+                   case 4: telagrafo.Process15.setVisible(drawLine);
+                            break;
+                  
+                             }
+                            break;
+                   case 2:  telagrafo.ancoraProcesso2.setVisible(drawAcnhor);
+                        switch (idrecursso){
+                       case 0:  telagrafo.Process21.setVisible(drawLine);
+                                break;
+                       case 1:  telagrafo.Process22.setVisible(drawLine);
+                                break;
+                       case 2:  telagrafo.Process23.setVisible(drawLine);
+                                break;
+                       case 3:  telagrafo.Process24.setVisible(drawLine);
+                                break;
+                       case 4: telagrafo.Process25.setVisible(drawLine);
+                                break;
+                  
+                             }
+                            break;
+                   case 3:  telagrafo.ancoraProcesso3.setVisible(drawAcnhor);
+                         switch (idrecursso){
+                       case 0:  telagrafo.Process31.setVisible(drawLine);
+                                break;
+                       case 1:  telagrafo.Process32.setVisible(drawLine);
+                               break;
+                       case 2:  telagrafo.Process33.setVisible(drawLine);
+                                break;
+                       case 3:  telagrafo.Process34.setVisible(drawLine);
+                                break;
+                       case 4: telagrafo.Process35.setVisible(drawLine);
+                                break;
+                  
+                             }
+                            break;
+                   case 4:  telagrafo.ancoraProcesso4.setVisible(drawAcnhor);
+                   
+                   switch (idrecursso){
+                       case 0:  telagrafo.Process41.setVisible(drawLine);
+                                break;
+                       case 1:  telagrafo.Process42.setVisible(drawLine);
+                                break;
+                       case 2:  telagrafo.Process43.setVisible(drawLine);
+                                break;
+                       case 3:  telagrafo.Process44.setVisible(drawLine);
+                                break;
+                       case 4: telagrafo.Process45.setVisible(drawLine);
+                                break;
+                  
+                             }
+                            break;
+                            
+                   case 5: telagrafo.ancoraProcesso5.setVisible(drawAcnhor);
+                   switch (idrecursso){
+                       case 0:  telagrafo.Process51.setVisible(drawLine);
+                                break;
+                       case 1:  telagrafo.Process52.setVisible(drawLine);
+                                break;
+                       case 2:  telagrafo.Process53.setVisible(drawLine);
+                                break;
+                       case 3:  telagrafo.Process54.setVisible(drawLine);
+                                break;
+                       case 4: telagrafo.Process55.setVisible(drawLine);
+                                break;
+                  
+                             }
+      
+                            break;
+                   case 6:  telagrafo.ancoraProcesso6.setVisible(drawAcnhor);
+                            break;
+                   case 7:  telagrafo.ancoraProcesso7.setVisible(drawAcnhor);
+                            break;
+                   case 8:  telagrafo.ancoraProcesso8.setVisible(drawAcnhor);
+                            break;
+                   case 9:  telagrafo.ancoraProcesso9.setVisible(drawAcnhor);
+                            break;
+                   case 10: telagrafo.ancoraProcesso10.setVisible(drawAcnhor);
+                            break;
+   
+            default:
+                     break;
+        }
+            
+        
+        }
       
       
     
+public void setKeepAlice(boolean b) {
+		keepAlive = false;
 
+	}
     
     
 

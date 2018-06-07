@@ -5,15 +5,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,6 +26,7 @@ import javafx.stage.Stage;
 public class TelaGrafoController implements Initializable  {
   @FXML
     public Button FIM;
+
 
     @FXML
     public AnchorPane NovoProcesso;
@@ -266,7 +261,77 @@ public class TelaGrafoController implements Initializable  {
 
     @FXML
     public Label nomePro5;
-    
+   
+    @FXML
+    public ImageView Process11;
+
+    @FXML
+    public ImageView Process12;
+
+    @FXML
+    public ImageView Process13;
+
+    @FXML
+    public ImageView Process14;
+
+    @FXML
+    public ImageView Process15;
+     @FXML
+    public ImageView Process21;
+
+    @FXML
+    public ImageView Process22;
+
+    @FXML
+    public ImageView Process23;
+
+    @FXML
+    public ImageView Process24;
+
+    @FXML
+    public ImageView Process25;
+        @FXML
+    public ImageView Process31;
+
+    @FXML
+    public ImageView Process32;
+
+    @FXML
+    public ImageView Process33;
+
+    @FXML
+    public ImageView Process34;
+
+    @FXML
+    public ImageView Process35;
+     @FXML
+    public ImageView Process41;
+
+    @FXML
+    public ImageView Process42;
+
+    @FXML
+    public ImageView Process43;
+
+    @FXML
+    public ImageView Process44;
+
+    @FXML
+    public ImageView Process45;
+     @FXML
+    public ImageView Process51;
+
+    @FXML
+    public ImageView Process52;
+
+    @FXML
+    public ImageView Process53;
+
+    @FXML
+    public ImageView Process55;
+
+    @FXML
+    public ImageView Process54;
     
     @FXML
     private void CriarProcesso(ActionEvent event) throws IOException {
@@ -337,7 +402,7 @@ public TelaGrafoController(int time , ArrayList<Recursos> resources){
                      break;
             case 2:
                 
-                      ancoraRecurso1.setVisible(true);
+                    ancoraRecurso1.setVisible(true);
                     ancoraRecurso2.setVisible(true);
                      break;
             case 3: 

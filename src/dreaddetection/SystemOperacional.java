@@ -135,7 +135,7 @@ public class SystemOperacional extends Thread {
 			}
                         //repete isso até percorrer todos os recurssos
 		} while(n - finishedProcesses > 1 && runnableProcesses > 0);
-            //não há deadlock
+            //não há deadlock se a quantidade de processos totais for menor do que a quantidade de processos em ciclo
             if(n - finishedProcesses <= 1) {
 			return null;
 		}
@@ -144,6 +144,7 @@ public class SystemOperacional extends Thread {
                 //há deadlock
 		for(int i = 0; i < n; i++) {
 			if(r[i] >= 0) {
+                                this.processes.get(i).getPid();
 				processesInDeadlock.add(this.processes.get(i).getPid());
                              
                         }
@@ -222,7 +223,7 @@ public class SystemOperacional extends Thread {
 		if(possible.isEmpty()) {
 			return -1;
 		}
-
+                        //sorteia entre os recursos dispniveis
 		Random random = new Random();
 		return possible.get(random.nextInt(possible.size()));
                 
@@ -289,7 +290,6 @@ public Recursos getResourceById(int id)
 		return null;
 	}
 	
-	
 	public int getindexProcess(int pid) {
 		for(int i = 0; i < this.processes.size(); i++) {
 			if(this.processes.get(i).getPid() == pid) {
@@ -307,6 +307,8 @@ public Recursos getResourceById(int id)
  private void desenharprocesso(int id, boolean draw){
                switch (id) {
             case 1:  telagrafo.ancoraProcesso1.setVisible(draw);
+                 
+            
                      break;
             case 2:  telagrafo.ancoraProcesso2.setVisible(draw);
                      break;
@@ -333,6 +335,8 @@ public Recursos getResourceById(int id)
             
         
         }
+ 
+ 
      private void desenharstatus(int id, boolean status){
                switch (id) {
             case 1:  telagrafo.statusPro1.setVisible(status);
