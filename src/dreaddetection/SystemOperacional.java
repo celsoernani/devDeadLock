@@ -53,14 +53,14 @@ public class SystemOperacional extends Thread {
                                 // se houver um deadlock e depois de matar um processo acabar o deadlock da essa mensagem
                                     if(!this.lastDead.equals("")) {
 					this.lastDead = "";
-					this.telagrafo.Log.appendText("\nMorreu o Deadlock \n");
+					this.telagrafo.Log.appendText("\n");
 				}
                                     
                                 }
 			}
                     //  enquanto nao ocorre deadlock  
                         else{
-                            this.telagrafo.Log.appendText("Sem Deadlock \n");
+                            this.telagrafo.Log.appendText("Não tem deadLock \n");
                         }
                        
 
@@ -83,13 +83,14 @@ public class SystemOperacional extends Thread {
                 int n = this.processes.size();
 		int m = this.resources.size();
 
-		//pegando os recursos disponiveis
+		//pegando os recursos disponiveis pode assumir valores 1 e 0
 		int a[] = new int[m];
 		for(int i = 0; i < m; i++) {
 			a[i] = this.resources.get(i).getRecursosDisp();
 		}
 
-		// alocando o vetor de recursos existentes na matriz de recursos disponiveis, assim criando o grafo
+		// alocando o vetor de recursos existentes na matriz de processos existentes, assim criando o grafo
+                //ou seja cada linha é um processo que recebe um vetor de recursos existentes
 		int c[][] = new int[n][m];
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < m; j++) {
@@ -98,6 +99,8 @@ public class SystemOperacional extends Thread {
 		}
                 
                 // pegando os recursos que estao sendo solicitados 
+                //o processo começa com pedidoatual = -1
+                // r[i] == 0 esta bloqueado se maior pega um recurso
                 int r[] = new int[n];
 		for(int i = 0; i < n; i++) {
 			r[i] = this.processes.get(i).getPedidoatual();
@@ -116,11 +119,12 @@ public class SystemOperacional extends Thread {
 			runnableProcesses = 0;
                         //faz a busca
 			for(int i = 0; i < n; i++) {
-                            //se nao houver recurso disponivel e recursos entao sendo solicitados por ja estarem ocupados
+                            //se ainda nao tiver pedido recurso ou esta de possse de um recurso qualquer e o recurso atual nao esta dipnivel
 				if(r[i] == -1 || r[i] >= 0 && a[r[i]] > 0) {
 					for(int k = 0; k < m; k++) {
-                                                //o processo que esta bloqueado é colocado junto com o recurso com o que faz o bloquear no vetor a
+                                               //percorre todos os processos e os recursos e soma a quantidade de procesos que estao em deadlock
                                                 a[k] += c[i][k];
+                                                //seta no local da matriz para nao voltar la 
 						c[i][k] = 0;
 					}
                                         
@@ -184,7 +188,6 @@ public class SystemOperacional extends Thread {
                 
 
 		
-		
                 mutex.release();
                 
 
@@ -247,8 +250,7 @@ public Recursos getResourceById(int id)
 
 
 	public void addResources(ArrayList<Recursos> resources) {
-		this.resources = resources;
-               
+		this.resources = resources;               
 	}
 
 	public void addProcess(Processos process) {

@@ -163,6 +163,7 @@ public class Processos extends Thread{
 				}
 			}
 		}
+         telagrafo.Log.appendText("O processo "+(Pid+1)+" morreu\n");
 
 		
         try {
@@ -345,6 +346,8 @@ public class Processos extends Thread{
        
         }
 
+      
+      
     
 
     
